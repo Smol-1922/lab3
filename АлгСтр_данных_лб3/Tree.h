@@ -41,7 +41,7 @@ public:
     class dft_iterator : public Iterator {
     private:
         Node* cur;
-       stacking fuck;
+       stack Stack;
         bool flag = true;
     public:
         dft_iterator(Node* root);

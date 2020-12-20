@@ -10,7 +10,7 @@ namespace UnitTest1
 	TEST_CLASS(UnitTest1)
 	{
 	public:
-		TEST_METHOD(InitTest1)
+		TEST_METHOD(BinarTree_Test1)
 		{
 			BinaryTree* Tree = new BinaryTree;
 			Tree->insert(1);
@@ -18,7 +18,7 @@ namespace UnitTest1
 			Assert::IsTrue(iter->next() == 1);
 		}
 
-		TEST_METHOD(InitTest2)
+		TEST_METHOD(BinarTree_Test2)
 		{
 			BinaryTree* Tree = new BinaryTree;
 			try
@@ -30,43 +30,47 @@ namespace UnitTest1
 				Assert::AreEqual(warning, "This tree is empty");
 			}
 		}
-		TEST_METHOD(InsertTest1)
+		TEST_METHOD(BinarTree_Test3)
 		{
 			BinaryTree* Tree = new BinaryTree;
-			int arr[10] = { 7, 4, 9, 1, 6, 8, 0, 3, 5, 2 };
-			for (int i = 0; i < 10; i++) Tree->insert(arr[i]);
+			int arr[10] = { 7,6,9,2,8,10,1,4,3,5 };
+			for (int i = 0; i < 10; i++) {
+				Tree->insert(arr[i]);
+			};
 			Iterator* iter = Tree->create_bft_iterator();
-			for (int i = 0; i < 10; i++) Assert::IsTrue(arr[i] == iter->next());
+			for (int i = 0; i < 10; i++) {
+				Assert::IsTrue(arr[i] == iter->next());
+			}
 		}
 
-		TEST_METHOD(InsertTest2)
+		TEST_METHOD(BinarTree_Test4)
 		{
 			BinaryTree* Tree = new BinaryTree;
-			int arr[10] = { 7, 4, 1, 0, 3, 2, 6, 5, 9, 8 };
+			int arr[10] = {7,6,2,1,4,3,5,9,8,10 };
 			for (int i = 0; i < 10; i++) Tree->insert(arr[i]);
 			Iterator* iter = Tree->create_dft_iterator();
 			for (int i = 0; i < 10; i++) Assert::IsTrue(arr[i] == iter->next());
 		}
 
-		TEST_METHOD(ContainsTest1)
+		TEST_METHOD(BinarTree_Test5)
 		{
 			BinaryTree* Tree = new BinaryTree;
-			int arr[10] = { 7, 4, 9, 1, 6, 8, 0, 3, 5, 2 };
+			int arr[10] = { 7,6,9,8,10,2,1,4,3,5 };
 			for (int i = 0; i < 10; i++) {
 				Tree->insert(arr[i]);
 				Assert::IsTrue(Tree->contains(arr[i]));
 			}
 		}
 
-		TEST_METHOD(ContainsTest2)
+		TEST_METHOD(BinarTree_Test6)
 		{
 			BinaryTree* Tree = new BinaryTree;
-			int arr[10] = { 7, 4, 9, 1, 6, 8, 0, 3, 5, 2 };
+			int arr[10] = { 7,6,9,8,10,2,1,4,3,5 };
 			for (int i = 0; i < 10; i++) Tree->insert(arr[i]);
-			Assert::IsFalse(Tree->contains(11));
+			Assert::IsFalse(Tree->contains(15));
 		}
 
-		TEST_METHOD(ContainsTest3)
+		TEST_METHOD(BinarTree_Test7)
 		{
 			BinaryTree* Tree = new BinaryTree;
 			try
@@ -79,23 +83,27 @@ namespace UnitTest1
 			}
 		}
 
-		TEST_METHOD(RemoveTest1)
+		TEST_METHOD(BinarTree_Test8)
 		{
 			BinaryTree* Tree = new BinaryTree;
-			int arr[10] = { 7, 4, 9, 1, 6, 8, 0, 3, 5, 2 };
-			for (int i = 0; i < 10; i++) Tree->insert(arr[i]);
+			int arr[10] = { 7,6,9,8,10,2,1,4,3,5 };
+			for (int i = 0; i < 10; i++) { 
+				Tree->insert(arr[i]);
+			}
 			Tree->remove(1);
 			Assert::IsFalse(Tree->contains(1));
 		}
 
-		TEST_METHOD(RemoveTest2)
+		TEST_METHOD(BinarTree_Test9)
 		{
 			BinaryTree* Tree = new BinaryTree;
-			int arr[10] = { 7, 4, 9, 1, 6, 8, 0, 3, 5, 2 };
-			for (int i = 0; i < 10; i++) Tree->insert(arr[i]);
+			int arr[10] = { 7,6,9,8,10,2,1,4,3,5 };
+			for (int i = 0; i < 10; i++) {
+				Tree->insert(arr[i]);
+			}
 			try
 			{
-				Tree->remove(11);
+				Tree->remove(16);
 			}
 			catch (const char* warning)
 			{
@@ -103,7 +111,7 @@ namespace UnitTest1
 			}
 		}
 
-		TEST_METHOD(RemoveTest3)
+		TEST_METHOD(BinarTree_Test10)
 		{
 			BinaryTree* Tree = new BinaryTree;
 			try

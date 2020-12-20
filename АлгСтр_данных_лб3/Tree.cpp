@@ -70,7 +70,7 @@ bool BinaryTree::contains(int key)
 void BinaryTree::remove(int key)
 {
 	if (!contains(key)) {
-		throw std::out_of_range("No such element exists");
+		throw "No such element exists";
 	}
 	else {
 		Node* iter;
@@ -219,7 +219,7 @@ void BinaryTree::remove(int key)
 BinaryTree::dft_iterator::dft_iterator(Node* root) {
 	cur = root;
 	if (cur != nullptr) {
-		fuck.push(cur);
+		Stack.push(cur);
 	}
 	else {
 		throw "This tree is empty";
@@ -235,10 +235,10 @@ int BinaryTree::dft_iterator::next(){
 	}
 	if (cur->Rnext != nullptr) {
 		if (flag) {
-			fuck.pop_front();
+			Stack.pop_front();
 			flag = false;
 		}
-		fuck.push(cur->Rnext);
+		Stack.push(cur->Rnext);
 	}
 	if (cur->Lnext != nullptr) {
 		cur = cur->Lnext;
@@ -247,10 +247,10 @@ int BinaryTree::dft_iterator::next(){
 	{
 
 		if (flag) {
-			fuck.pop_front();
+			Stack.pop_front();
 		}
 		if (has_next()) {
-			cur = fuck.head->date;
+			cur = Stack.head->date;
 		}
 		flag = true;
 	}
@@ -258,7 +258,7 @@ int BinaryTree::dft_iterator::next(){
 }
 
 bool BinaryTree::dft_iterator::has_next(){
-	if (cur->Lnext == nullptr && cur->Rnext == nullptr && fuck.size == 0) return false;
+	if (cur->Lnext == nullptr && cur->Rnext == nullptr && Stack.size == 0) return false;
 	else return true;
 }
 BinaryTree::bft_iterator::bft_iterator(Node* root) {
