@@ -55,7 +55,7 @@ namespace UnitTest1
 		TEST_METHOD(BinarTree_Test5)
 		{
 			BinaryTree* Tree = new BinaryTree;
-			int arr[10] = { 7,6,9,8,10,2,1,4,3,5 };
+			int arr[10] = { 7,6,2,1,4,3,5,9,8,10 };
 			for (int i = 0; i < 10; i++) {
 				Tree->insert(arr[i]);
 				Assert::IsTrue(Tree->contains(arr[i]));
