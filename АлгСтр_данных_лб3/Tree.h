@@ -11,11 +11,13 @@ class BinaryTree
 private:
 	Node* Root;
 public:
-	 BinaryTree();
+    BinaryTree();
 	~BinaryTree();
+    void preOrder(Node*);
 	bool contains(int); // поиск элемента в дереве по ключу
 	void insert(int); // добавление элемента в дерево по ключу. Должен работать за O(logN)
 	void remove(int); // удаление элемента дерева по ключу
+
    Iterator* create_bft_iterator() {
         return new bft_iterator(Root);
     }

@@ -7,10 +7,10 @@ BinaryTree::BinaryTree()
 {
 	Root = nullptr;
 }
-//BinaryTree::~BinaryTree()
-//{
-//	clear();
-//}
+BinaryTree::~BinaryTree()
+{
+	preOrder(Root); 
+}
 void BinaryTree::insert(int key)
 {
 	if (Root == NULL) {
@@ -297,4 +297,10 @@ int BinaryTree::bft_iterator:: next() {
 bool BinaryTree::bft_iterator::has_next() {
 	if (cur->Lnext == nullptr && cur->Rnext == nullptr && Queue.size == 0) return false;
 	else return true;
+}
+void BinaryTree::preOrder(Node* node) {
+	if (node == nullptr) return;
+	preOrder(node->Lnext);
+	preOrder(node->Rnext);
+	delete node;
 }
