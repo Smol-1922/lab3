@@ -216,4 +216,85 @@ void BinaryTree::remove(int key)
 	}
 
 }
+BinaryTree::dft_iterator::dft_iterator(Node* root) {
+	cur = root;
+	if (cur != nullptr) {
+		fuck.push(cur);
+	}
+	else {
+		throw "This tree is empty";
+	}
+}
 
+BinaryTree::dft_iterator::~dft_iterator() {
+}
+int BinaryTree::dft_iterator::next(){
+	int temp = cur->key;
+	if (!has_next()) {
+		throw "This tree is empty";
+	}
+	if (cur->Rnext != nullptr) {
+		if (flag) {
+			fuck.pop_front();
+			flag = false;
+		}
+		fuck.push(cur->Rnext);
+	}
+	if (cur->Lnext != nullptr) {
+		cur = cur->Lnext;
+	}
+	else
+	{
+
+		if (flag) {
+			fuck.pop_front();
+		}
+		if (has_next()) {
+			cur = fuck.head->date;
+		}
+		flag = true;
+	}
+	return temp;
+}
+
+bool BinaryTree::dft_iterator::has_next(){
+	if (cur->Lnext == nullptr && cur->Rnext == nullptr && fuck.size == 0) return false;
+	else return true;
+}
+BinaryTree::bft_iterator::bft_iterator(Node* root) {
+	cur = root;
+	if (cur != nullptr) {
+		Queue.push(cur);
+	}
+	else {
+		throw "This tree is empty";
+	}
+
+}
+
+BinaryTree::bft_iterator::~bft_iterator() {
+	delete cur;
+	Queue.clear();
+}
+
+int BinaryTree::bft_iterator:: next() {
+
+	if (!has_next()) {
+		throw "This tree is empty";
+	}
+	cur = Queue.head->date;
+	Queue.pop();
+
+	if (cur->Lnext != nullptr) {
+		Queue.push(cur->Lnext);
+	}
+	if (cur->Rnext != nullptr) {
+		Queue.push(cur->Rnext);
+	}
+	return cur->key;
+}
+
+bool BinaryTree::bft_iterator::has_next() {
+	if (cur->Lnext == nullptr && cur->Rnext == nullptr && Queue.size == 0) return false;
+	else return true;
+}

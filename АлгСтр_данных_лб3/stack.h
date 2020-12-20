@@ -2,7 +2,7 @@
 #define stack_H
 #include"Tree.h"
 #include"TreeNode.h"
-class stack
+class stacking
 {
 private:
 	class stackNode {
@@ -25,12 +25,12 @@ public:
 	stackNode* head;
 	stackNode* tail;
 	unsigned int size;
-	stack() {
+	 stacking() {
 		head = nullptr;
 		tail = nullptr;
 		size = 0;
 	}
-	~stack() {
+	~stacking() {
 		clear();
 	}
 	void clear() {
