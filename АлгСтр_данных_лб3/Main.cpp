@@ -2,25 +2,20 @@
 #include<iostream>
 int main()
 {
-	Iterator* gggg;
+	Iterator* Iter;
 	BinaryTree* Tree = new BinaryTree;
-	Tree->insert(8);
-	Tree->insert(3);
-	Tree->insert(1);
-	Tree->insert(6);
-	Tree->insert(4);
-	Tree->insert(7);
-	Tree->insert(10);
-	Tree->insert(14);
-	Tree->insert(13);
-	gggg = Tree->create_bft_iterator();
+	int array[9] = { 8,3,1,6,4,7,10,14,13 };
 	for (int i = 0; i < 9; i++) {
-		std::cout << gggg->next() << " ";
+		Tree->insert(array[i]);
+	}
+	Iter = Tree->create_bft_iterator();
+	for (int i = 0; i < 9; i++) {
+		std::cout << Iter->next() << " ";
 	}
 	std::cout << "\n";
-	gggg = Tree->create_dft_iterator();
+	Iter = Tree->create_dft_iterator();
 	for (int i = 0; i < 9; i++) {
-		std::cout << gggg->next() << " ";
+		std::cout << Iter->next() << " ";
 	}
 	return 0;
 }
